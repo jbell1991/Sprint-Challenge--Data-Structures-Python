@@ -42,7 +42,7 @@ class LinkedList:
        # if the node is none then the list is empty
         if node is None:
             return
-        # finds the last element in the list which points to None
+        # once the last item that points to None is reached 
         elif node.next_node is None:
             # if the node points to None set it to the head
             self.head = node
@@ -50,6 +50,7 @@ class LinkedList:
             node.next_node = prev
             return
         else:
+            # reverse pointers
             nxt = node.next_node
             node.next_node = prev
             self.reverse_list(nxt, node)
