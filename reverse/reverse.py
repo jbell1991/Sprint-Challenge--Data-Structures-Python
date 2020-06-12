@@ -39,4 +39,36 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+       # if the node is none then the list is empty
+        if node is None:
+            return
+        # finds the last element in the list which points to None
+        elif node.next_node is None:
+            # if the node points to None set it to the head
+            self.head = node
+            # set the next node to the previous node
+            node.next_node = prev
+            return
+        else:
+            nxt = node.next_node
+            node.next_node = prev
+            self.reverse_list(nxt, node)
+
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.value)
+            current = current.next_node
+
+# Tests 
+
+# llist = LinkedList()
+# llist.add_to_head(1)
+# llist.add_to_head(2)
+# llist.add_to_head(3)
+# llist.add_to_head(4)
+# llist.add_to_head(5)
+
+# print(llist.print_list())
+# llist.reverse_list(llist.head, None)
+# print(llist.print_list())
